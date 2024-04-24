@@ -1,0 +1,41 @@
+<div class="favorite">
+  <div class="container">
+    <div class="favorite-title">
+      Избранное
+    </div>
+
+    <div class="favorite-empty" *ngIf="emptyFlag">
+      <div>В избранном нет товара</div>
+      <button class="btn" routerLink="/catalog">В каталог</button>
+    </div>
+
+    <div class="favorite-products" *ngIf="!emptyFlag">
+      <div class="favorite-product" *ngFor="let favorite of favorites">
+        <div class="favorite-product-img" style="background-image: url({{serverStaticPath + favorite.image}})">
+
+        </div>
+        <div class="favorite-product-name">
+          {{favorite.name}}
+        </div>
+        <div class="favorite-product-price">
+          {{favorite.price}} BYN
+        </div>
+        <count-selector [count]="favorite.countInCart ? favorite.countInCart : 1" (onCountChange)="updateCount($event, favorite.id, favorite.countInCart ? favorite.countInCart : 0)"></count-selector>
+        <div class="favorite-product-action">
+          <button class="btn" *ngIf="!favorite.countInCart" (click)="addToCart(favorite.id,  favorite.countInCart ? favorite.countInCart : 0)">В корзину</button>
+          <button class="btn transparent btn-in-cart" *ngIf="favorite.countInCart" (click)="removeFromCart(favorite.id)">
+            <span>В кoрзине</span>
+            <span>Удалить</span>
+          </button>
+        </div>
+        <div class="favorite-product-remove" (click)="removeFromFavorites(favorite.id)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="1.93562" y1="2.6499" x2="13.9564" y2="14.6707" stroke="#A8ABA7" stroke-linecap="round"/>
+            <line x1="13.9238" y1="2.62996" x2="1.90301" y2="14.6508" stroke="#A8ABA7" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

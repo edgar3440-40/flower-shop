@@ -1,0 +1,118 @@
+@import "mixins";
+@import "variables";
+
+.data-form {
+  max-width: 646px;
+
+  .data-form-block {
+    margin-bottom: 30px;
+
+    .data-form-label {
+      margin-bottom: 20px;
+      font-family: 'Monsterat', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      color: #2C2C2C;
+    }
+
+    .data-form-label-additional {
+      max-width: 528px;
+      font-size: 16px;
+      line-height: 130%;
+      color: $gray-text-color;
+      margin-bottom: 20px;
+    }
+
+    .data-form-types {
+      display: flex;
+      align-items: center;
+      max-width: 318px;
+      box-sizing: border-box;
+      border: 1px solid #519157;
+      border-radius: 3px;
+      text-align: center;
+      font-size: 18px;
+      color: $green-text-color;
+
+      .data-form-type-item {
+        padding: 13px 35px;
+        cursor: pointer;
+        background: transparent;
+
+        &.active {
+          color: #FFFFFF;
+          background-color: #519157;
+        }
+      }
+    }
+
+    .data-form-inputs {
+      display: grid;
+      gap: 8px;
+
+      input[type=text] {
+        height: 53px;
+      }
+
+      &.personal-data-inputs {
+        grid-template-columns: repeat(3, 210px);
+      }
+
+      &.address-inputs {
+
+        grid-template-columns: repeat(2, 125px) 162px;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+               "street srteet street"
+              "house entrance apart";
+
+        .input.street {
+          grid-column-start: 1;
+          grid-column-end: 4;
+          grid-row-start: 1;
+          grid-row-end: 2;
+        }
+        .input.house {
+          grid-column-start: 1;
+          grid-column-end: 2;
+          grid-row-start: 2;
+          grid-row-end: 3;
+        }
+        .input.entrance {
+          grid-column-start: 2;
+          grid-column-end: 3;
+          grid-row-start: 2;
+          grid-row-end: 3;
+        }
+        .input.apart {
+          grid-column-start: 3;
+          grid-column-end: 4;
+          grid-row-start: 2;
+          grid-row-end: 3;
+        }
+      }
+    }
+
+    .data-form-radio {
+      .data-form-radio-block {
+        margin-bottom: 12px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        label {
+          color: $green-text-color;
+          font-size: 16px;
+        }
+
+        input:checked {
+          + label {
+            font-family: 'Monsterat', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
