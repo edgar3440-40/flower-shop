@@ -71,8 +71,6 @@ export class FavoriteComponent implements OnInit {
           }
 
       });
-
-
   }
 
   addToCart(id: string, countInCart: number) {
